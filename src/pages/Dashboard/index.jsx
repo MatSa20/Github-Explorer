@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Title, Form, Error, Repositories } from './styeles'
 import api from '../../services/api'
 import { FiChevronRight } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 import logoImg from '../../assets/logo.svg'
 
 
@@ -62,7 +63,7 @@ export default function Dashboard() {
 
       <Repositories>
         {repositories.map(repository => (
-          <a key={repository.full_name} href='teste'>
+          <Link key={repository.full_name} to={`/repository/${repository.full_name}`}>
             <img src={repository.owner.avatar_url}
               alt={repository.owner.login} />
             <div>
@@ -71,7 +72,7 @@ export default function Dashboard() {
             </div>
 
             <FiChevronRight size={20} />
-          </a>
+          </Link>
         ))}
       </Repositories>
     </>
